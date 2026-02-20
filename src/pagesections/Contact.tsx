@@ -50,7 +50,6 @@ const Contact = () => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true)
     }, []);
-    
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
