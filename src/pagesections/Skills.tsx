@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { imgskills01js, imgskills02css, imgskills03html, imgskills04jsexpress, imgskills05mongodb, imgskills06react, imgskills07typescript, imgskills08docker, verticalLine } from "../../public/imgassets/assets-img";
-import { animate_containerStagger, animate_fadeInScaleUp, animate_progress, animate_slideRight } from "./a_aranimation";
+import { animate_containerStagger, animate_progress, animate_slideRight } from "./a_aranimation";
 import { motion } from 'framer-motion';
 import AnimatedNumber from "@/components/AnimatedNumber";
 
@@ -58,7 +58,6 @@ const skillsPercentage = [
 
 const slideRightVar = animate_slideRight;
 const containerStaggerVar = animate_containerStagger;
-const fadeInScaleUpVar = animate_fadeInScaleUp;
 
 const Skills = () => {
     return (

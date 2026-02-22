@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 import { animate_fadeIn, animate_slideUp, animate_slideLeft, animate_slideRight, animate_verticalLine } from "./a_aranimation";
 
+const MotionButton = motion(Button);
+
 const HeroContent = () => {
 
     const verticalLineVar = animate_verticalLine;
@@ -40,17 +42,13 @@ const HeroContent = () => {
                         <p className="flex gap-2.25"><Image src={logoLine} alt="Logo-line" width={24} height={0} /> Hi, I am Edwin Anderson Frontend Developer</p>
                         <p className="md:text-display-4xl text-display-lg font-extrabold text-gray-25">BUILDING FAST & <span className="text-primary-200">INTERACTIVE</span> WEB EXPERIENCES.</p>
                         <p className="text-lg text-neutral-400 max-w-149.25">Bridging creativity and functionality to deliver stunning, user-friendly web applications</p>
-
-                        <motion.div
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.95 }}
-                            transition={{ type: 'spring', stiffness: 400 }}
-                            className="w-full md:max-w-75"
-                        >
-                            <Button variant={'default'} className="rounded-full w-full md:max-w-75 md:h-14 h-12 shadow-green-glow">
-                                HIRE ME
-                            </Button>
-                        </motion.div>
+                        <MotionButton
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.98 }}
+                            variant={'default'}
+                            className="rounded-full w-full md:max-w-75 md:h-14 h-12 shadow-green-glow">
+                            HIRE ME
+                        </MotionButton>
                     </div>
                 </motion.div>
 
