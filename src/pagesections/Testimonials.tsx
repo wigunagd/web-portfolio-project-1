@@ -4,6 +4,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { allTestimonials } from "./TestimonialsArray";
 import { iconStar } from "../../public/imgassets/assets-img";
+import { animate_fadeInScaleUp } from "./a_aranimation";
+import { motion } from 'framer-motion';
+import { Button } from "@/components/ui/button";
+
+const fadeInScaleUpVar = animate_fadeInScaleUp;
+const MotionButton = motion(Button);
 
 const Testimonials = () => {
     const [mounted, setMounted] = useState(false);
@@ -52,10 +58,15 @@ const Testimonials = () => {
 
             <div id="experience-content" className="relative flex flex-col w-full items-center px-4 md:px-0 md:max-w-296 mx-auto py-10 md:py-20 gap-10">
 
-                <div className="w-full flex flex-col items-center">
+                <motion.div
+                    variants={fadeInScaleUpVar}
+                    initial="initialState"
+                    whileInView="animateState"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="w-full flex flex-col items-center">
                     <p className="text-md md:text-lg text-primary-200">TESTIMONIALS</p>
                     <p className="font-extrabold text-display-md md:text-display-2xl">PEOPLE SAYS ABOUT ME</p>
-                </div>
+                </motion.div>
 
                 <div
                     id="grid-flow"
@@ -90,20 +101,26 @@ const Testimonials = () => {
                 </div>
 
                 <div className="flex gap-4">
-                    <button
+                    <MotionButton
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.98 }}
+                        variant={'ghost'}
                         id="btn-scroll-left"
                         type="button"
                         onClick={() => scroll('left')}
-                        className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full border">
+                        className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full border hover:bg-neutral-900">
                         <span className={`text-xl md:text-2xl ${!isAtStart && ('text-primary-200')}`}>←</span>
-                    </button>
-                    <button
+                    </MotionButton>
+                    <MotionButton
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.98 }}
+                        variant={'ghost'}
                         id="btn-scroll-right"
                         type="button"
                         onClick={() => scroll('right')}
-                        className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full border">
+                        className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full border hover:bg-neutral-900">
                         <span className={`text-xl md:text-2xl ${!isAtEnd && ('text-primary-200')}`}>→</span>
-                    </button>
+                    </MotionButton>
                 </div>
 
             </div>

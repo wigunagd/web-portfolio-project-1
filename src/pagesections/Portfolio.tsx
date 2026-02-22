@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { imgworks1, imgworks2, imgworks3, imgworks4, imgworks5, imgworks6 } from "../../public/imgassets/assets-img";
 import { motion } from 'framer-motion'
+import { animate_fadeInScaleUp } from "./a_aranimation";
 
 const worksTitle = "Dashboard SaaS Task Management";
 const worksDesc = "Lorem ipsum dolor sit amet consectetur. Aenean sed commodo aenean nunc lobortis.";
@@ -34,18 +35,30 @@ const listWorks = [
     },
 ];
 
+const fadeInScaleUpVar = animate_fadeInScaleUp;
+
 const Portfolio = () => {
     return (
         <section id="experience-section" className="relative flex flex-col w-full">
 
             <div id="experience-content" className="relative flex flex-col w-full items-center px-4 md:px-0 md:max-w-296 mx-auto py-10 md:py-20 gap-10">
 
-                <div className="w-full flex flex-col items-center">
+                <motion.div
+                    variants={fadeInScaleUpVar}
+                    initial="initialState"
+                    whileInView="animateState"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="w-full flex flex-col items-center">
                     <p className="text-md md:text-lg text-primary-200">PORTFOLIO</p>
                     <p className="font-extrabold text-display-md md:text-display-2xl">SELECTED WORK</p>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 w-full">
+                <motion.div
+                    variants={fadeInScaleUpVar}
+                    initial="initialState"
+                    whileInView="animateState"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 w-full">
                     {listWorks.map((works, i) => (
                         <motion.div
                             key={i}
@@ -85,7 +98,7 @@ const Portfolio = () => {
 
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
             </div>
 

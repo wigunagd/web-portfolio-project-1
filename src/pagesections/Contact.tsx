@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const formMessage = {
     "true": {
@@ -20,6 +21,32 @@ const formMessage = {
         message: "Something went wrong on our end. Please try again in a moment",
         btnText: "TRY AGAIN",
         imageIcon: iconMessageNotOk
+    }
+};
+
+const overlayVariants = {
+    initialState: { opacity: 0 },
+    animateState: { opacity: 1 },
+    exitState: { opacity: 0 }
+};
+
+const modalVariants = {
+    initialState: { opacity: 0, scale: 0.8, y: 20 },
+    animateState: {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        transition: {
+            type: 'spring',
+            damping: 25,
+            stiffness: 300
+        } as const
+    },
+    exitState: {
+        opacity: 0,
+        scale: 0.8,
+        y: 20,
+        transition: { duration: 0.2 }
     }
 };
 
@@ -172,33 +199,58 @@ const Contact = () => {
                 height={92}
                 className="absolute md:w-34.5 md:h-23 w-[103.5px] h-17.25 bottom-0 right-0 z-4" />
 
-            <div
-                id="bg-form-cover"
-                className={`${openDialog ? 'fixed' : 'hidden'} inset-0 z-7 flex items-center justify-center bg-background/70`}
-            >
-                <div
-                    id="form-confirm"
-                    className="relative w-90.25 md:w-119.75 p-10 md:p-14 rounded-2xl border bg-background
-                    pt-20 pr-6 pb-6 pl-6
-                    md:pt-20 md:pr-8 md:pb-8 md:pl-8
-                    "
-                >
-                    <div className="flex flex-col gap-4">
-                        <Image src={currentMessage.imageIcon} alt="icon Message"
-                            className="absolute w-[119.39px] h-27.5 md:w-[147.61px] md:h-34 top-0 left-1/2 -translate-1/2" />
-                        <p className="text-center text-lg md:text-xl font-bold">{currentMessage.title}</p>
-                        <p className="text-center text-sm md:text-md text-neutral-400">
-                            {currentMessage.message}
-                        </p>
-                        <Button
-                            onClick={handleClose}
-                            variant={'default'}
-                            type="button"
-                            className="rounded-full w-full md:h-14 h-12 shadow-green-glow text-sm md:text-md font-bold"
-                        >{currentMessage.btnText}</Button>
-                    </div>
-                </div>
-            </div>
+            <AnimatePresence>
+                {openDialog && (
+                    <motion.div
+                        id="bg-form-cover"
+                        variants={overlayVariants}
+                        initial="initialState"
+                        animate="animateState"
+                        exit="exitState"
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm px-6"
+                    >
+                        <motion.div
+                            id="form-confirm"
+                            variants={modalVariants}
+                            className="relative w-full max-w-120 p-8 md:p-12 rounded-2xl border bg-background shadow-2xl 
+                           pt-20 md:pt-24 mx-auto"
+                        >
+                            <div className="flex flex-col gap-6">
+                                <motion.div
+                                    initial={{ y: -20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.2 }}
+                                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center"
+                                >
+                                    <Image
+                                        src={currentMessage.imageIcon}
+                                        alt="icon Message"
+                                        className="w-30 h-auto md:w-37.5"
+                                    />
+                                </motion.div>
+
+                                <div className="space-y-3 text-center">
+                                    <p className="text-xl md:text-2xl font-bold leading-tight">
+                                        {currentMessage.title}
+                                    </p>
+                                    <p className="text-sm md:text-base text-neutral-400 max-w-[90%] mx-auto">
+                                        {currentMessage.message}
+                                    </p>
+                                </div>
+
+                                <Button
+                                    onClick={handleClose}
+                                    variant={'default'}
+                                    type="button"
+                                    className="rounded-full w-full md:h-14 h-12 shadow-green-glow text-sm md:text-md font-bold mt-2"
+                                >
+                                    {currentMessage.btnText}
+                                </Button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
         </section>
     )

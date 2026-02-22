@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { iconGreenStar1 } from "../../public/imgassets/assets-img";
 import { useCallback, useEffect, useState } from "react";
+import { animate_containerStagger, animate_fadeInScaleUp } from "./a_aranimation";
+import { motion } from 'framer-motion';
 
 const faqList = [
     {
@@ -25,6 +27,10 @@ const faqList = [
         question: "You can contact me via email, LinkedIn, or GitHub. I usually begin with a consultation to discuss your needs, then propose a plan to bring your vision to life. Let’s create something awesome together!"
     },
 ];
+
+const containerStaggerVar = animate_containerStagger;
+const fadeInScaleUpVar = animate_fadeInScaleUp;
+
 
 const FAQ = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -49,17 +55,29 @@ const FAQ = () => {
 
             <div id="experience-content" className="relative flex flex-col w-full items-center px-4 md:px-0 md:max-w-296 mx-auto py-10 md:py-20 gap-10">
 
-                <div className="w-full flex flex-col items-center">
+                <motion.div
+                    variants={fadeInScaleUpVar}
+                    initial="initialState"
+                    whileInView="animateState"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="w-full flex flex-col items-center">
                     <p className="text-md md:text-lg text-primary-200">FAQ</p>
                     <p className="font-extrabold text-display-md md:text-display-2xl">FREQUENTLY ASKED QUESTIONS</p>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 w-full">
+                <motion.div
+                    variants={containerStaggerVar}
+                    initial="initialState"
+                    whileInView="animateState"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="grid grid-cols-1 md:grid-cols-2 w-full">
 
                     {
                         faqList.map((faq, i) => (
 
-                            <div key={i}
+                            <motion.div
+                                variants={fadeInScaleUpVar}
+                                key={i}
                                 className={`flex flex-col w-full gap-3xl py-10 
                                 ${i < faqList.length - (isMobile ? 1 : 2)
                                         ? 'border-b'
@@ -77,13 +95,13 @@ const FAQ = () => {
                                     </div>
                                     <span className="text-sm md:text-md text-neutral-400">{faq.question}</span>
                                 </div>
-                            </div>
+                            </motion.div>
 
                         ))
                     }
 
 
-                </div>
+                </motion.div>
 
             </div>
 
