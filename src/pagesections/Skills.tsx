@@ -1,5 +1,10 @@
+'use client'
+
 import Image from "next/image";
 import { imgskills01js, imgskills02css, imgskills03html, imgskills04jsexpress, imgskills05mongodb, imgskills06react, imgskills07typescript, imgskills08docker, verticalLine } from "../../public/imgassets/assets-img";
+import { animate_containerStagger, animate_fadeInScaleUp, animate_progress, animate_slideRight } from "./a_aranimation";
+import { motion } from 'framer-motion';
+import AnimatedNumber from "@/components/AnimatedNumber";
 
 const skillsList = [
     {
@@ -51,13 +56,21 @@ const skillsPercentage = [
     },
 ];
 
+const slideRightVar = animate_slideRight;
+const containerStaggerVar = animate_containerStagger;
+const fadeInScaleUpVar = animate_fadeInScaleUp;
+
 const Skills = () => {
     return (
         <section id="skills-section" className="relative flex flex-col w-full">
 
             <div id="skills-content" className="relative flex flex-col md:flex-row w-full items-center md:max-w-296 mx-auto py-10 md:py-30 md:px-32 lg:px-0 px-[16px] gap-10">
 
-                <div className="flex flex-col w-full md:w-1/2 gap-14.5">
+                <motion.div variants={slideRightVar}
+                    initial="initialState"
+                    whileInView="animateState"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="flex flex-col w-full md:w-1/2 gap-14.5">
                     <div className="w-full flex flex-col gap-2">
                         <p className="text-primary-200 text-md md:text-lg font-medium">SKILLS</p>
                         <p className="text-display-md md:text-display-2xl font-extrabold">SKILLS THAT BRING IDEAS TO LIFE</p>
@@ -74,15 +87,21 @@ const Skills = () => {
                         }
                     </div>
 
-                </div>
+                </motion.div>
 
-                <div className="flex flex-col w-full md:w-1/2 gap-3xl">
+                <motion.div
+                    variants={containerStaggerVar}
+                    initial="initialState"
+                    whileInView="animateState"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="flex flex-col w-full md:w-1/2 gap-3xl">
                     {
                         skillsPercentage.map((s, i) => (
                             <div key={i} className="w-full flex gap-4 md:gap-3xl">
                                 <div className="relative w-4/5 h-[41.4px] md:h-16 flex items-center">
                                     <div className="w-full border"></div>
-                                    <div
+                                    <motion.div
+                                        variants={animate_progress}
                                         className={`absolute flex left-0 h-[41.4px] md:h-16 rounded-2xl bg-primary-300 px-6 items-center`}
                                         style={{
                                             width: `${s.percent}%`,
@@ -94,16 +113,17 @@ const Skills = () => {
                                                         transparent 18px
                                                     )`
                                         }}
-                                    >{s.id}</div>
+                                    ></motion.div>
+                                    <span className="absolute flex left-0 px-6">{s.id}</span>
                                 </div>
                                 <div className="w-1/5 text-sm md:text-xl font-semibold text-right md:text-left">
-                                    {s.percent}%
+                                    <AnimatedNumber value={s.percent} />%
                                 </div>
                             </div>
                         ))
                     }
 
-                </div>
+                </motion.div>
 
             </div>
 
