@@ -99,8 +99,6 @@ const FAQ = () => {
 
                         ))
                     }
-
-
                 </motion.div>
 
             </div>

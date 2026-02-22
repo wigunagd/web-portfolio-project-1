@@ -207,26 +207,22 @@ const Contact = () => {
                         initial="initialState"
                         animate="animateState"
                         exit="exitState"
-                        className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm px-6"
-                    >
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm px-6">
                         <motion.div
                             id="form-confirm"
                             variants={modalVariants}
                             className="relative w-full max-w-120 p-8 md:p-12 rounded-2xl border bg-background shadow-2xl 
-                           pt-20 md:pt-24 mx-auto"
-                        >
+                           pt-20 md:pt-24 mx-auto">
                             <div className="flex flex-col gap-6">
                                 <motion.div
                                     initial={{ y: -20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ delay: 0.2 }}
-                                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center"
-                                >
+                                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center">
                                     <Image
                                         src={currentMessage.imageIcon}
                                         alt="icon Message"
-                                        className="w-30 h-auto md:w-37.5"
-                                    />
+                                        className="w-30 h-auto md:w-37.5" />
                                 </motion.div>
 
                                 <div className="space-y-3 text-center">
@@ -242,8 +238,7 @@ const Contact = () => {
                                     onClick={handleClose}
                                     variant={'default'}
                                     type="button"
-                                    className="rounded-full w-full md:h-14 h-12 shadow-green-glow text-sm md:text-md font-bold mt-2"
-                                >
+                                    className="rounded-full w-full md:h-14 h-12 shadow-green-glow text-sm md:text-md font-bold mt-2">
                                     {currentMessage.btnText}
                                 </Button>
                             </div>
