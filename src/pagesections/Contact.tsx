@@ -63,14 +63,17 @@ const Contact = () => {
 
     const handleName = (text: string) => {
         setName(text);
+        setNameValid(text.length>0);
     }
 
     const handleEmail = (text: string) => {
         setEmail(text);
+        setEmailValid(text.length>0);
     }
 
     const handleMessage = (text: string) => {
         setMessage(text);
+        setMessageValid(text.length>0);
     }
 
     useEffect(() => {
