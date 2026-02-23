@@ -61,7 +61,7 @@ const containerStaggerVar = animate_containerStagger;
 
 const Skills = () => {
     return (
-        <section id="skills-section" className="relative flex flex-col w-full">
+        <section id="skills" className="relative flex flex-col w-full">
 
             <div id="skills-content" className="relative flex flex-col md:flex-row w-full items-center md:max-w-296 mx-auto py-10 md:py-30 md:px-32 lg:px-0 px-[16px] gap-10">
 

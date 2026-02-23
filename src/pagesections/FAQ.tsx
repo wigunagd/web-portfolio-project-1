@@ -51,9 +51,9 @@ const FAQ = () => {
     if (!mounted) return null;
 
     return (
-        <section id="experience-section" className="relative flex flex-col w-full">
+        <section id="faq" className="relative flex flex-col w-full">
 
-            <div id="experience-content" className="relative flex flex-col w-full items-center px-4 md:px-0 md:max-w-296 mx-auto py-10 md:py-20 gap-10">
+            <div id="faq-content" className="relative flex flex-col w-full items-center px-4 md:px-0 md:max-w-296 mx-auto py-10 md:py-20 gap-10">
 
                 <motion.div
                     variants={fadeInScaleUpVar}

@@ -13,10 +13,10 @@ const navItems = [
         href: "#home"
     }, {
         label: "About",
-        href: "#about"
+        href: "#about-me"
     }, {
         label: "Skill",
-        href: "#skill"
+        href: "#skills"
     }, {
         label: "Projects",
         href: "#projects"

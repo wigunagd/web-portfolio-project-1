@@ -114,9 +114,9 @@ const Contact = () => {
     const currentMessage = formMessage[String(success) as keyof typeof formMessage];
 
     return (
-        <section id="why-choose-me-section" className="relative flex flex-col w-full gap-30.5">
+        <section id="contact" className="relative flex flex-col w-full gap-30.5">
 
-            <div id="why-choose-me-content" className="relative flex md:flex-row flex-col w-full items-center px-4 md:px-0 md:max-w-296 mx-auto pt-10 pb-18 md:pt-20 md:pb-30 gap-10">
+            <div id="contact-content" className="relative flex md:flex-row flex-col w-full items-center px-4 md:px-0 md:max-w-296 mx-auto pt-10 pb-18 md:pt-20 md:pb-30 gap-10">
 
                 <div className="relative w-full md:w-1/2 flex flex-row items-center justify-center">
                     <div className="relative flex w-full max-w-[349.2px] md:max-w-[420.89px]">

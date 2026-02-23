@@ -12,7 +12,7 @@ const AboutMe = () => {
     const containerStaggerVar = animate_containerStagger;
 
     return (
-        <section id="about-me-section" className="relative flex flex-col w-full">
+        <section id="about-me" className="relative flex flex-col w-full">
 
             <motion.div
                 variants={fadeInScaleUp}

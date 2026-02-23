@@ -39,9 +39,9 @@ const fadeInScaleUpVar = animate_fadeInScaleUp;
 
 const Portfolio = () => {
     return (
-        <section id="experience-section" className="relative flex flex-col w-full">
+        <section id="projects" className="relative flex flex-col w-full">
 
-            <div id="experience-content" className="relative flex flex-col w-full items-center px-4 md:px-0 md:max-w-296 mx-auto py-10 md:py-20 gap-10">
+            <div id="projects-content" className="relative flex flex-col w-full items-center px-4 md:px-0 md:max-w-296 mx-auto py-10 md:py-20 gap-10">
 
                 <motion.div
                     variants={fadeInScaleUpVar}
