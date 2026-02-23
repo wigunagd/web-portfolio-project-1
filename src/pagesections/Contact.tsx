@@ -126,9 +126,9 @@ const Contact = () => {
 
                     <div className="absolute w-full flex flex-col z-5 items-center gap-xl bottom-0">
                         <div className="flex flex-row gap-xl">
-                            <Image src={imgSocialLogo1Dribble} alt="Img-Social-Logo-Dribble" className="w-12 h-12 md:w-16 md:h-16" />
-                            <Image src={imgSocialLogo2Ig} alt="Img-Social-Logo-Ig" className="w-12 h-12 md:w-16 md:h-16" />
-                            <Image src={imgSocialLogo3Linkedin} alt="Img-Social-Logo-Linkedin" className="w-12 h-12 md:w-16 md:h-16" />
+                            <a href="#Dribble"><Image src={imgSocialLogo1Dribble} alt="Img-Social-Logo-Dribble" className="w-12 h-12 md:w-16 md:h-16" /></a>
+                            <a href="#Ig"><Image src={imgSocialLogo2Ig} alt="Img-Social-Logo-Ig" className="w-12 h-12 md:w-16 md:h-16" /></a>
+                            <a href="#Linkedin"><Image src={imgSocialLogo3Linkedin} alt="Img-Social-Logo-Linkedin" className="w-12 h-12 md:w-16 md:h-16" /></a>
                         </div>
                         <div>Edwin Anderson</div>
                         <div className="flex gap-lg">

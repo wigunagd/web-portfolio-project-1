@@ -5,6 +5,7 @@ import { heroCoverImg, heroCoverImgGradient, heroManImg, imgTetris1, iconStar, l
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 import { animate_fadeIn, animate_slideUp, animate_slideLeft, animate_slideRight, animate_verticalLine } from "./a_aranimation";
+import { scrollSmooth } from "@/components/ScrollSmooth";
 
 const MotionButton = motion(Button);
 
@@ -15,6 +16,10 @@ const HeroContent = () => {
     const slideRightVar = animate_slideRight;
     const fadeInVar = animate_fadeIn;
     const slideUpVar = animate_slideUp;
+
+    const handleButtonClick = (e?: React.MouseEvent<HTMLAnchorElement>) => {
+        scrollSmooth(e);
+    };
 
     return (
         <>
@@ -43,11 +48,12 @@ const HeroContent = () => {
                         <p className="md:text-display-4xl text-display-lg font-extrabold text-gray-25">BUILDING FAST & <span className="text-primary-200">INTERACTIVE</span> WEB EXPERIENCES.</p>
                         <p className="text-lg text-neutral-400 max-w-149.25">Bridging creativity and functionality to deliver stunning, user-friendly web applications</p>
                         <MotionButton
+                            asChild
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.98 }}
                             variant={'default'}
                             className="rounded-full w-full md:max-w-75 md:h-14 h-12 shadow-green-glow">
-                            HIRE ME
+                            <a href="#contact" onClick={handleButtonClick}>HIRE ME</a>
                         </MotionButton>
                     </div>
                 </motion.div>

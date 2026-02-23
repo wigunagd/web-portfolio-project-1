@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { iconClose, iconMenu } from "../../public/imgassets/assets-img";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, Variants } from "framer-motion"
+import { scrollSmooth } from "./ScrollSmooth";
 
 const navItems = [
     {
@@ -38,28 +39,6 @@ const Navigation = () => {
         setMenuOpen(!menuOpen);
     }
 
-    const handleMenuClick = (e?: React.MouseEvent<HTMLAnchorElement>) => {
-        if (e) {
-            e.preventDefault();
-            const targetId = e.currentTarget.getAttribute('href');
-            const targetElement = document.querySelector<HTMLElement>(targetId || '');
-
-            if (targetElement) {
-                const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        setMenuOpen(!menuOpen);
-    };
-
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 768);
@@ -89,6 +68,14 @@ const Navigation = () => {
             document.body.style.overflow = 'unset';
         };
     }, [menuOpen, isMobile]);
+
+    const handleMenuClick = (e?: React.MouseEvent<HTMLAnchorElement>) => {
+        scrollSmooth(e);
+
+        if (isMobile) {
+            setMenuOpen(!menuOpen);
+        }
+    };
 
     const menuVariants: Variants = {
         open: {
@@ -160,7 +147,16 @@ const Navigation = () => {
                         exit={{ rotate: 90, opacity: 0 }}
                         transition={{ duration: 0.2, ease: 'easeInOut' }}
                     >
-                        <Image src={menuOpen ? iconClose : iconMenu} width={24} height={24} alt="menu-toggle-btn-img" />
+                        {
+                            menuOpen && (
+                                <Image src={iconClose} width={24} height={24} alt="menu-toggle-btn-img" />
+                            )
+                        }
+                        {
+                            !menuOpen && (
+                                <Image src={iconMenu} width={24} height={24} alt="menu-toggle-btn-img" />
+                            )
+                        }
                     </motion.div>
                 </Button>
             </nav>

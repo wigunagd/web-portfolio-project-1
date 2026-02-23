@@ -5,6 +5,7 @@ import { iconGreenStar1, iconGreenStar2, imgPortraitBlankSm, imgPortraitSm } fro
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 import { animate_containerStagger, animate_fadeInScaleUp } from "./a_aranimation";
+import { scrollSmooth } from "@/components/ScrollSmooth";
 
 const me = [
     "React Expert",
@@ -23,6 +24,10 @@ const other = [
     "Inconsistent Responsiveness",
     "No Design Skills"
 ];
+
+    const handleButtonClick = (e?: React.MouseEvent<HTMLAnchorElement>) => {
+        scrollSmooth(e);
+    };
 
 const containerStaggerVar = animate_containerStagger;
 const fadeInScaleUpVar = animate_fadeInScaleUp;
@@ -89,11 +94,12 @@ const WhyChooseMe = () => {
                 </motion.div>
 
                 <MotionButton
+                asChild
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                     variant={'default'}
                     className="rounded-full w-full md:max-w-60 md:h-14 h-12 shadow-green-glow"
-                >HIRE ME</MotionButton>
+                ><a href="#contact" onClick={handleButtonClick}>HIRE ME</a></MotionButton>
 
             </div>
 
