@@ -10,7 +10,7 @@ import { AnimatePresence, motion, Variants } from "framer-motion"
 const navItems = [
     {
         label: "Home",
-        href: "#home"
+        href: "#hero"
     }, {
         label: "About",
         href: "#about-me"
@@ -37,6 +37,28 @@ const Navigation = () => {
     const handleMenuOpen = () => {
         setMenuOpen(!menuOpen);
     }
+
+    const handleMenuClick = (e?: React.MouseEvent<HTMLAnchorElement>) => {
+        if (e) {
+            e.preventDefault();
+            const targetId = e.currentTarget.getAttribute('href');
+            const targetElement = document.querySelector<HTMLElement>(targetId || '');
+
+            if (targetElement) {
+                const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        setMenuOpen(!menuOpen);
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -119,7 +141,7 @@ const Navigation = () => {
                         `}>
                                 {
                                     navItems.map((nav) => (
-                                        <li key={nav.label}><a href={nav.href}>{nav.label}</a></li>
+                                        <li key={nav.label}><a onClick={handleMenuClick} href={nav.href}>{nav.label}</a></li>
                                     ))
                                 }
                             </ul>

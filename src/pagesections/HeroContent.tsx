@@ -30,7 +30,7 @@ const HeroContent = () => {
                 <Image id="line-2" src={verticalLine} width={1} height={875} alt="v-line" className="absolute mt-20 md:mt-0 ml-[70.73%] md:ml-[49.09%]" />
             </motion.div>
 
-            <div className="relative flex md:flex-row flex-col md:mt-0 mt-20 pb-9.5 justify-center items-center">
+            <section id="hero" className="relative flex md:flex-row flex-col md:mt-0 mt-20 pb-9.5 justify-center items-center">
 
                 <motion.div
                     variants={slideRightVar}
@@ -101,7 +101,7 @@ const HeroContent = () => {
                         </motion.div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }
