@@ -57,6 +57,7 @@ const HeroContent = () => {
                         </MotionButton>
                     </div>
                 </motion.div>
+                
 
                 <div className="relative flex w-full flex-col justify-between items-center md:items-end overflow-x-hidden">
                     <Image src={imgTetris1} alt="tetris-hero" width={138} height={92} className="absolute md:w-34.5 md:h-23 w-[103.5px] h-17.25 md:bottom-0 bottom-38.75 left-0 z-5" />
